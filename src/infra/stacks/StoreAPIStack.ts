@@ -6,7 +6,7 @@ interface ApiStackProps extends StackProps {
   lambdaIntegration: LambdaIntegration;
 }
 
-export class ApiStack extends Stack {
+export class StoreApiStack extends Stack {
   constructor(scope: Construct, id: string, props: ApiStackProps) {
     super(scope, id, props);
     const api = new RestApi(this, 'Store');

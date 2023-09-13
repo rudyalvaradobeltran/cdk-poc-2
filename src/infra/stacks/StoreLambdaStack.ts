@@ -11,7 +11,7 @@ interface LambdaStackProps extends StackProps {
   tables: Array<ITable>;
 }
 
-export class LambdaStack extends Stack {
+export class StoreLambdaStack extends Stack {
   public readonly lambdaIntegration: LambdaIntegration;
 
   constructor(scope: Construct, id: string, props: LambdaStackProps) {
@@ -20,7 +20,7 @@ export class LambdaStack extends Stack {
     const lambdaFunction = new NodejsFunction(this, 'LambdaFunction', {
       runtime: Runtime.NODEJS_18_X,
       handler: 'handler',
-      entry: (join(__dirname, '..','..', 'services', 'default.ts')),
+      entry: (join(__dirname, '..','..', 'services', 'index.ts')),
       environment: {
         TABLE_USERS_NAME: 'Users',
         TABLE_PRODUCTS_NAME: 'Products'

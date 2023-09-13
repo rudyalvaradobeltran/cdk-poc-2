@@ -1,9 +1,6 @@
 {
   "name": "cdk-poc-2",
   "version": "0.1.0",
-  "bin": {
-    "cdk-poc-2": "bin/cdk-poc-2.js"
-  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",

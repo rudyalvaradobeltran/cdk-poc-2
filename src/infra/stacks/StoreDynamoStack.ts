@@ -2,7 +2,7 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import { AttributeType, ITable, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-export class DynamoStack extends Stack {
+export class StoreDynamoStack extends Stack {
   public readonly userTable: ITable;
   public readonly productTable: ITable;
 
