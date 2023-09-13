@@ -1,13 +1,16 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { getById } from "./GetById";
 import { insert } from "./Insert";
 
 const ddbClient = new DynamoDBClient({});
 
-const usersHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+const handler = async (
+  event: APIGatewayProxyEvent,
+  _context: Context
+): Promise<APIGatewayProxyResult> => {
   try {
-    switch (event.path.split("/")[1]) {
+    switch (event.path.split("/")[2]) {
       case "getById":
         const getByIdResponse = await getById(event, ddbClient);
         return getByIdResponse;
@@ -32,4 +35,4 @@ const usersHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProx
   return response;
 }
 
-export { usersHandler };
+export { handler };

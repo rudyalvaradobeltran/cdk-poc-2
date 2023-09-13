@@ -7,7 +7,7 @@ const insert = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): P
   const item = JSON.parse(event.body || '');
 
   const result = await ddbClient.send(new PutItemCommand({
-    TableName: process.env.TABLE_PRODUCTS_NAME,
+    TableName: process.env.TABLE_NAME,
     Item: {
       id: {
         S: randomId
@@ -25,8 +25,8 @@ const insert = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): P
   }));
 
   return {
-    statusCode: 400,
-    body: JSON.stringify({})
+    statusCode: 201,
+    body: JSON.stringify({ message: 'Created', id: randomId })
   }
 }
 
