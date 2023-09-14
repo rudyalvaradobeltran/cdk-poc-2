@@ -12,8 +12,8 @@ const insert = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): P
       id: {
         S: randomId
       },
-      name: {
-        S: item.name
+      username: {
+        S: item.username
       },
       active: {
         BOOL: true
@@ -21,9 +21,16 @@ const insert = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): P
     }
   }));
 
-  return {
-    statusCode: 201,
-    body: JSON.stringify({ message: 'Created', id: randomId })
+  if (result) {
+    return {
+      statusCode: 201,
+      body: JSON.stringify({ message: 'Created', id: randomId })
+    }
+  } else {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'Database error' })
+    }
   }
 }
 

@@ -30,7 +30,8 @@ export class StoreUsersLambdaStack extends Stack {
       effect: Effect.ALLOW,
       resources: [props.usersTable.tableArn],
       actions:[
-        'dynamodb:PutItem'
+        'dynamodb:PutItem',
+        'dynamodb:GetItem'
       ]
     }));
     

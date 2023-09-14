@@ -15,7 +15,12 @@ export class StoreApiStack extends Stack {
     const api = new RestApi(this, 'Store');
     const usersResource = api.root.addResource('users');
     const productsResource = api.root.addResource('products');
-    productsResource.addResource('insert').addMethod('POST', props.lambdaIntegration.productsIntegration);
-    usersResource.addResource('insert').addMethod('POST', props.lambdaIntegration.usersIntegration);
+    productsResource.addResource('getAll').addMethod('GET', props.lambdaIntegration.productsIntegration);
+    productsResource.addResource('getById').addMethod('GET', props.lambdaIntegration.productsIntegration);
+    productsResource.addResource('insert').addMethod('PUT', props.lambdaIntegration.productsIntegration);
+    productsResource.addResource('updateById').addMethod('POST', props.lambdaIntegration.productsIntegration);
+    productsResource.addResource('deleteById').addMethod('DELETE', props.lambdaIntegration.productsIntegration);
+    usersResource.addResource('insert').addMethod('PUT', props.lambdaIntegration.usersIntegration);
+    usersResource.addResource('getById').addMethod('GET', props.lambdaIntegration.usersIntegration);
   }
 }
