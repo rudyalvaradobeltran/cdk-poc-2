@@ -1,9 +1,9 @@
-/* import { handler } from "../src/services/index";
+import { handler } from "../src/services/products";
+
+process.env.AWS_REGION = "us-east-1";
+process.env.TABLE_NAME = "Products";
 
 handler({
-  path: '/',
-  httpMethod: 'POST',
-  body: JSON.stringify({
-     location: 'Dublin'
-  })
-} as any, {} as any); */
+  path: '/products/getAll',
+  httpMethod: 'GET'
+} as any, {} as any);

@@ -12,11 +12,14 @@ const updateById = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient
         id: { S: productId }
       },
       UpdateExpression: "set productName = :productName, productPrice = :productPrice",
+      ConditionExpression: "attribute_exists(id)",
       ExpressionAttributeValues: {
         ":productName": { S: item.productName },
         ":productPrice": { S: item.productPrice }
       }
     }));
+
+    console.log(updatedProductById);
 
     if (updatedProductById) {
       return {

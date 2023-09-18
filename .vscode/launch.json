@@ -6,14 +6,15 @@
       "request": "launch",
       "name": "Debug local file",
       "runtimeArgs": [
-          "-r",
-          "ts-node/register"
+        "-r",
+        "ts-node/register"
       ],
       "args": [
-          "${relativeFile}"
+        "${relativeFile}"
       ],
       "env": {
-          "AWS_REGION": "eu-east-1"
+        "AWS_REGION": "eu-east-1",
+        "TABLE_NAME": "Products"
       }
     }
   ]

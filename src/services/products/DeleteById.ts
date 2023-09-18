@@ -5,14 +5,16 @@ const deleteById = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient
   if(event.queryStringParameters && 'id' in event.queryStringParameters && event.queryStringParameters['id']) {
     const productId = event.queryStringParameters['id'];
     
-    const updatedProductById = await ddbClient.send(new DeleteItemCommand({
+    const deletedProductById = await ddbClient.send(new DeleteItemCommand({
       TableName: process.env.TABLE_NAME,
       Key: {
         id: { S: productId }
       },
     }));
 
-    if (updatedProductById) {
+    console.log(deletedProductById);
+
+    if (deletedProductById) {
       return {
         statusCode: 200,
         body: JSON.stringify(`Product with id ${productId} deleted successfully`)
