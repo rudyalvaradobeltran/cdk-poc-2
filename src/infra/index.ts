@@ -3,6 +3,7 @@ import { StoreProductsLambdaStack } from './stacks/StoreProductsLambdaStack';
 import { StoreUsersLambdaStack } from './stacks/StoreUsersLambdaStack';
 import { StoreDynamoStack } from './stacks/StoreDynamoStack';
 import { StoreApiStack } from './stacks/StoreAPIStack';
+import { AuthStack } from './stacks/AuthStack';
 
 const app = new App();
 const dynamoStack = new StoreDynamoStack(app, 'DynamoStack');
@@ -12,6 +13,7 @@ const storeProductsLambdaStack = new StoreProductsLambdaStack(app, 'StoreProduct
 const storeUsersLambdaStack = new StoreUsersLambdaStack(app, 'StoreUsersLambdaStack', {
   usersTable: dynamoStack.userTable
 });
+new AuthStack(app, 'AuthStack');
 new StoreApiStack(app, 'ApiStack', {
   lambdaIntegration: {
     productsIntegration: storeProductsLambdaStack.lambdaIntegration,
