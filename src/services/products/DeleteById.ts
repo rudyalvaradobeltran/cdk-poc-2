@@ -1,8 +1,16 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { DynamoDBClient, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
+import { hasAdminGroup } from "../shared/permissions";
 
 const deleteById = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient): Promise<APIGatewayProxyResult> => {
   if(event.queryStringParameters && 'id' in event.queryStringParameters && event.queryStringParameters['id']) {
+    if (!hasAdminGroup(event)) {
+      return {
+        statusCode: 401,
+        body: JSON.stringify(`Not authorized`)
+      }
+    }
+
     const productId = event.queryStringParameters['id'];
     
     const deletedProductById = await ddbClient.send(new DeleteItemCommand({
@@ -11,8 +19,6 @@ const deleteById = async (event: APIGatewayProxyEvent, ddbClient: DynamoDBClient
         id: { S: productId }
       },
     }));
-
-    console.log(deletedProductById);
 
     if (deletedProductById) {
       return {

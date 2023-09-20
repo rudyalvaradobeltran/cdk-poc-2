@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "43b6c17c-bf36-4d2a-a23d-ca2367328bf8",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15988500",
+		"_collection_link": "https://planetary-crescent-765656.postman.co/workspace/New~714a5294-afcd-4c54-b34a-cd8660850840/collection/15988500-43b6c17c-bf36-4d2a-a23d-ca2367328bf8?action=share&source=collection_link&creator=15988500"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/getAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/getById?id=63dadbd5-314f-452b-991d-b65a14fe9b9a",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "63dadbd5-314f-452b-991d-b65a14fe9b9a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/getById?id=e9ddf4c3-8474-41dc-91fa-690127cb1fca",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e9ddf4c3-8474-41dc-91fa-690127cb1fca"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Tortilla\",\r\n    \"productPrice\": \"1000\",\r\n    \"userID\": \"5a4f3f54-7c36-4e50-b5ab-2c4108467a39\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/products/insert",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Charlotte\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/insert",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/deleteById?id=192851f5-86dc-4279-a1d6-003b50c0c0b5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"deleteById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "192851f5-86dc-4279-a1d6-003b50c0c0b5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product By Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Pie de Limón\",\r\n    \"productPrice\": \"2500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/products/updateById?id=e9ddf4c3-8474-41dc-91fa-690127cb1fca",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"updateById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e9ddf4c3-8474-41dc-91fa-690127cb1fca"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJraWQiOiJ6MmJkVnBCWkxKYWVZWGJETEF4cHhzWFlFcDdVeGRkVmNQTXpYa3NLSUIwPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkNDg4MzQyOC04MDYxLTcwMTAtY2NkOS03NWE2Y2JiMWU4ZWYiLCJjb2duaXRvOmdyb3VwcyI6WyJhZG1pbnMiXSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfWHBQZVYwdGptIiwiY29nbml0bzp1c2VybmFtZSI6IlJ1ZHkiLCJvcmlnaW5fanRpIjoiMDMyN2QwYmMtZDZkNS00MjMyLTkwMWQtN2FkNGE2MTM2YmNhIiwiYXVkIjoiMjJzcWlvazFlazk3cWkyZ2drMGI3ajlyZGgiLCJldmVudF9pZCI6ImQyNGQ5MGFjLWY3MTctNGU2OC05ZmQ5LWVmZmNjODhlZmZhNCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjk1MTc4Njc2LCJleHAiOjE2OTUxODIyNzYsImlhdCI6MTY5NTE3ODY3NiwianRpIjoiYWJlMDc0ZmQtYzZjMC00NmE2LTk1ZjUtYzFhZWJmZWQ4YWYxIiwiZW1haWwiOiJydWR5LmFsdmFyYWRvLmJAZ21haWwuY29tIn0.uZEBHqIeQEVNjsz4YsyPjsX2bUVk_sU8uA9YVF4LfWiyawWVhinZfD5CnX2wI7K9FgH-KTIONHxfsFokDCpRMzJ1laX-IuahFR6meMkIddrpia02YmtvRIB3WBbB-X_otjDUO-_sChYg4VZLno4K8uJh6IbDdGbqqozFDRvzv91bYTAR7btMkDDn7NxIIhKol3gDyi6mZL9_26_JM7LVynhFcbSCusOgu7iMEeZJnLmhzFsxPS6-Rte0iwo6xir2lpN0ybaEZeHre1-LXlwqw49Y-reQxrVRxl9fA8pe8vEv1gGmSopzUdLwawEKyAisk1HDysO7NpsV8QCcTfBRUA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://vb00dkgg6b.execute-api.us-east-1.amazonaws.com/prod/",
+			"type": "string"
+		}
+	]
+}

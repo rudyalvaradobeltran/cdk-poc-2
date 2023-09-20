@@ -12,7 +12,7 @@ const validateProduct = (arg: any) => {
     throw new MissingFieldError('id');
   }
   if ((arg as Product).productName == undefined) {
-    throw new MissingFieldError('username');
+    throw new MissingFieldError('productName');
   }
   if ((arg as Product).productPrice == undefined) {
     throw new MissingFieldError('productPrice');

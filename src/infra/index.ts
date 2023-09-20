@@ -3,20 +3,21 @@ import { StoreProductsLambdaStack } from './stacks/StoreProductsLambdaStack';
 import { StoreUsersLambdaStack } from './stacks/StoreUsersLambdaStack';
 import { StoreDynamoStack } from './stacks/StoreDynamoStack';
 import { StoreApiStack } from './stacks/StoreAPIStack';
-import { AuthStack } from './stacks/AuthStack';
+import { StoreAuthStack } from './stacks/StoreAuthStack';
 
 const app = new App();
-const dynamoStack = new StoreDynamoStack(app, 'DynamoStack');
+const dynamoStack = new StoreDynamoStack(app, 'StoreDynamoStack');
 const storeProductsLambdaStack = new StoreProductsLambdaStack(app, 'StoreProductsLambdaStack', {
   productsTable: dynamoStack.productTable
 });
 const storeUsersLambdaStack = new StoreUsersLambdaStack(app, 'StoreUsersLambdaStack', {
   usersTable: dynamoStack.userTable
 });
-new AuthStack(app, 'AuthStack');
-new StoreApiStack(app, 'ApiStack', {
+const storeAuthStack = new StoreAuthStack(app, 'StoreAuthStack');
+new StoreApiStack(app, 'StoreApiStack', {
   lambdaIntegration: {
     productsIntegration: storeProductsLambdaStack.lambdaIntegration,
     usersIntegration: storeUsersLambdaStack.lambdaIntegration
-  }
+  },
+  userPool: storeAuthStack.userPool
 });
